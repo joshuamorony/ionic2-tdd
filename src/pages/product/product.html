@@ -1,0 +1,19 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Product</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+
+	<ion-list>
+		<ion-item *ngFor="let product of productsService.products">
+			<h3>{{product.title}}</h3>
+			<span>{{product.price}}</span>
+			<p>{{product.description}}</p>
+		</ion-item>
+	</ion-list>
+
+</ion-content>
