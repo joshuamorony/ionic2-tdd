@@ -10,11 +10,11 @@ describe('Provider: Products', () => {
  
     it('should have a non empty array called products', () => {
  
-            let products = productsService.products;
- 
-            expect(Array.isArray(products)).toBeTruthy;
-            expect(products.length).toBeGreaterThan(0);
-        }
-    ));
+		let products = productsService.products;
+
+		expect(Array.isArray(products)).toBeTruthy();
+		expect(products.length).toBeGreaterThan(0);
+
+    });
  
 });
