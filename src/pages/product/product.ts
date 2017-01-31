@@ -11,7 +11,7 @@ export class ProductPage {
   constructor(public navCtrl: NavController, public productsService: Products) {}
 
   ionViewDidLoad() {
-
+  	this.productsService.load();
   }
 
 }
