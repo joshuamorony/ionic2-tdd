@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { Products } from '../../providers/products'
+import { Products } from '../../providers/products';
+import { WishlistPage } from '../wishlist/wishlist';
 
 @Component({
   selector: 'page-product',
@@ -12,6 +13,12 @@ export class ProductPage {
 
   ionViewDidLoad() {
   	this.productsService.load();
+  }
+
+  launchWishlist() {
+
+  	this.navCtrl.push(WishlistPage);
+
   }
 
 }

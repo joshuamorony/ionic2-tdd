@@ -1,17 +1,20 @@
-<ion-header>
+<ion-header no-border>
 
-  <ion-navbar>
-    <ion-title>Product</ion-title>
+  <ion-navbar color="secondary">
+    <ion-title>Browse</ion-title>
+    <ion-buttons end>
+    	<button ion-button icon-only (click)="launchWishlist()"><ion-icon name="heart"></ion-icon></button>
+	</ion-buttons>
   </ion-navbar>
 
 </ion-header>
 
 <ion-content>
 
-	<ion-list>
+	<ion-list no-lines>
 		<ion-item *ngFor="let product of productsService.products">
 			<h3>{{product.title}}</h3>
-			<span>{{product.price}}</span>
+			<span>${{product.price}}</span>
 			<p>{{product.description}}</p>
 		</ion-item>
 	</ion-list>

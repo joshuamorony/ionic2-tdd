@@ -1,12 +1,13 @@
-import { TestBed, ComponentFixture, async } from '@angular/core/testing';
+import { TestBed, ComponentFixture, async, inject } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { IonicModule, NavController } from 'ionic-angular';
 import { MyApp } from '../../app/app.component';
 import { ProductPage } from './product';
+import { WishlistPage } from '../wishlist/wishlist';
 import { Products } from '../../providers/products';
-import { ProductsMock } from '../../mocks';
-
+import { ProductsMock, NavMock } from '../../mocks';
+ 
 let comp: ProductPage;
 let fixture: ComponentFixture<ProductPage>;
 let de: DebugElement;
@@ -21,7 +22,10 @@ describe('Page: Product Page', () => {
             declarations: [MyApp, ProductPage],
  
             providers: [
-                NavController, 
+                {
+                    provide: NavController,
+                    useClass: NavMock
+                },
                 { 
                     provide: Products, 
                     useClass: ProductsMock
@@ -73,5 +77,17 @@ describe('Page: Product Page', () => {
 
     });
 
+    it('should be able to launch wishlist page', () => {
+
+        let navCtrl = fixture.debugElement.injector.get(NavController);
+        spyOn(navCtrl, 'push');
+
+        de = fixture.debugElement.query(By.css('ion-buttons button'));
+
+        de.triggerEventHandler('click', null);
+
+        expect(navCtrl.push).toHaveBeenCalledWith(WishlistPage);
+
+    });
  
 });
