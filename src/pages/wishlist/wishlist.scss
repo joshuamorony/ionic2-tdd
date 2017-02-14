@@ -1,3 +1,33 @@
-page-wishlist {
+.ios, .md {
+
+	page-wishlist {
+
+		ion-item-sliding {
+			width: 96%;
+			margin-left: 2%;
+			margin-top: 20px;
+			position: relative;
+			background-color: #fff;
+		}
+
+		ion-item {
+
+			background-color: #fff;
+			padding: 20px;
+
+			h3 {
+				font-size: 1.3em;
+			}
+
+			span {
+				color: #cecece;
+				font-size: 0.8em;
+				position: absolute;
+				top: 20px;
+				right: 20px;
+			}
+
+		}
+	}
 
 }

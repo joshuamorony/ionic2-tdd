@@ -10,7 +10,7 @@ import 'zone.js/dist/fake-async-test';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { getTestBed, TestBed } from '@angular/core/testing';
 import { BrowserDynamicTestingModule, platformBrowserDynamicTesting } from '@angular/platform-browser-dynamic/testing';
-import { App, Config, Form, IonicModule, Keyboard, DomController, MenuController, NavController, Platform } from 'ionic-angular';
+import { App, Config, Form, IonicModule, Keyboard, MenuController, DomController, NavController, Platform } from 'ionic-angular';
 import { ConfigMock } from './mocks';
  
 // Unfortunately there's no typing for the `__karma__` variable. Just declare it as any.

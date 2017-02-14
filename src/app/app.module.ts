@@ -3,6 +3,7 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { ProductPage } from '../pages/product/product';
 import { WishlistPage } from '../pages/wishlist/wishlist';
+import { WishlistService } from '../providers/wishlist-service';
 import { Products } from '../providers/products';
 
 @NgModule({
@@ -20,6 +21,6 @@ import { Products } from '../providers/products';
     ProductPage,
     WishlistPage
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, Products]
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, Products, WishlistService]
 })
 export class AppModule {}

@@ -1,12 +1,13 @@
-import { TestBed, ComponentFixture, async, inject } from '@angular/core/testing';
+import { TestBed, ComponentFixture, async } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { IonicModule, NavController } from 'ionic-angular';
 import { MyApp } from '../../app/app.component';
 import { ProductPage } from './product';
 import { WishlistPage } from '../wishlist/wishlist';
+import { WishlistService } from '../../providers/wishlist-service';
 import { Products } from '../../providers/products';
-import { ProductsMock, NavMock } from '../../mocks';
+import { ProductsMock, NavMock, WishlistServiceMock } from '../../mocks';
  
 let comp: ProductPage;
 let fixture: ComponentFixture<ProductPage>;
@@ -29,6 +30,10 @@ describe('Page: Product Page', () => {
                 { 
                     provide: Products, 
                     useClass: ProductsMock
+                },
+                {
+                    provide: WishlistService,
+                    useClass: WishlistServiceMock
                 }
             ],
  
@@ -87,6 +92,23 @@ describe('Page: Product Page', () => {
         de.triggerEventHandler('click', null);
 
         expect(navCtrl.push).toHaveBeenCalledWith(WishlistPage);
+
+    });
+
+    it('should add product to wishlist when add to wishlist button clicked', () => {
+
+        let wishlistService = fixture.debugElement.injector.get(WishlistService);
+        spyOn(wishlistService, 'addProduct');
+
+        let productsService = fixture.debugElement.injector.get(Products);
+        let firstProduct = productsService.products[0];
+
+        fixture.detectChanges();
+
+        de = fixture.debugElement.query(By.css('ion-item-sliding button'));
+        de.triggerEventHandler('click', null);
+
+        expect(wishlistService.addProduct).toHaveBeenCalledWith(firstProduct);
 
     });
  
